@@ -156,6 +156,7 @@ cython_debug/
 
 # personal files
 extracted_frames/*
+test_files/*
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
