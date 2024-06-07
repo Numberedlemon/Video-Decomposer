@@ -59,11 +59,11 @@ def update_progress(progress):
 
 # Create the main window
 root = tk.Tk()
-root.title("Video Frame Extractor")
+root.title("Video Decomposer")
 root.geometry("600x500")  # Set the window size
 
 # Create a label with instructions
-lbl_instructions = tk.Label(root, text="Select a video file to extract frames:", font=("Arial", 14))
+lbl_instructions = tk.Label(root, text="Select a video file to decompose:", font=("Arial", 14))
 lbl_instructions.pack(pady=10)
 
 # Create a button to open the file dialog
