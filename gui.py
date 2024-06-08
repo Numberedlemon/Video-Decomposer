@@ -43,11 +43,11 @@ def select_file():
 def extract_frames_thread(video_path, output_dir, max_workers):
     success, result = frame_extractor.extract_frames(video_path, output_dir, max_workers, update_progress)
     if success:
-        progress_label.config(text=f"Extracted {result['frame_count']} frames to {output_dir}")
+        progress_label.config(text=f"Decomposed {video_path} into {result['frame_count']} frames.")
         time_label.config(text=f"Total Time Taken: {result['total_time']:.2f}s")
-        total_frame_size_label.config(text=f"Total Frames Size: {result['total_frames_size_mb']:.2f} MB")
-        compression_ratio_label.config(text=f"Compression Ratio: {result['compression_ratio']:.2f}")
-        avg_extraction_time_label.config(text=f"Average Extraction Time: {result['avg_frame_extraction_time']:.6f}s")
+        total_frame_size_label.config(text=f"Decomposed Disk Space: {result['total_frames_size_mb']:.2f} MB")
+        compression_ratio_label.config(text=f"Decompression Ratio: {result['compression_ratio']:.2f}")
+        avg_extraction_time_label.config(text=f"Average Frame Decomposition Time: {result['avg_frame_extraction_time']:.6f}s")
         fps_label.config(text=f"Frames per Second (FPS): {result['fps']:.2f}")
         cpu_utilization_label.config(text=f"CPU Utilization: {result['cpu_utilization']:.2f}%")
         memory_utilization_label.config(text=f"Memory Utilization: {result['memory_utilization']:.2f}%")

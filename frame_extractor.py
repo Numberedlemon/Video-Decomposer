@@ -98,7 +98,7 @@ def extract_frames(video_path, output_dir, max_workers, progress_callback=None):
     return True, metadata
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Extract frames from video files.")
+    parser = argparse.ArgumentParser(description="Decompose video files into individual frames.")
     parser.add_argument("input_dir", type=str, help="Path to the directory containing input video files.")
     parser.add_argument("output_dir", type=str, help="Path to the output directory.")
     parser.add_argument("--max-workers", type=int, default=4, help="Maximum number of worker threads.")
@@ -114,17 +114,17 @@ def main():
         video_path = os.path.join(args.input_dir, video_file)
         success, metadata = extract_frames(video_path, args.output_dir, args.max_workers)
         if success:
-            print(f"Extracted {metadata['frame_count']} frames from {video_file} to {metadata['video_output_dir']}")
+            print(f"Decomposed {video_path}  into {metadata['frame_count']} frames.")
             print(f"Total Time Taken: {metadata['total_time']:.2f}s")
-            print(f"Total Frames Size: {metadata['total_frames_size_mb']:.2f} MB")
-            print(f"Compression Ratio: {metadata['compression_ratio']:.2f}")
-            print(f"Average Frame Extraction Time: {metadata['avg_frame_extraction_time']:.6f}s")
+            print(f"Decomposed Disk Space: {metadata['total_frames_size_mb']:.2f} MB")
+            print(f"Decompression Ratio: {metadata['compression_ratio']:.2f}")
+            print(f"Average Frame Decomposition Time: {metadata['avg_frame_extraction_time']:.6f}s")
             print(f"Frames per Second (FPS): {metadata['fps']:.2f}")
             print(f"CPU Utilization: {metadata['cpu_utilization']:.2f}%")
             print(f"Memory Utilization: {metadata['memory_utilization']:.2f}%")
             print()
         else:
-            print(f"Extraction failed for {video_file}.")
+            print(f"Decomposition failed for {video_file}.")
 
 if __name__ == "__main__":
     main()
