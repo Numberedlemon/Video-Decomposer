@@ -41,9 +41,10 @@ def select_file():
         threading.Thread(target=extract_frames_thread, args=(file_path, output_dir, max_workers)).start()
 
 def extract_frames_thread(video_path, output_dir, max_workers):
+    rel_path = os.path.relpath(video_path)
     success, result = frame_extractor.extract_frames(video_path, output_dir, max_workers, update_progress)
     if success:
-        progress_label.config(text=f"Decomposed {video_path} into {result['frame_count']} frames.")
+        progress_label.config(text=f"Decomposed {rel_path} into {result['frame_count']} frames.")
         time_label.config(text=f"Total Time Taken: {result['total_time']:.2f}s")
         total_frame_size_label.config(text=f"Decomposed Disk Space: {result['total_frames_size_mb']:.2f} MB")
         compression_ratio_label.config(text=f"Decompression Ratio: {result['compression_ratio']:.2f}")

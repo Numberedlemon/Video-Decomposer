@@ -112,9 +112,10 @@ def main():
 
     for video_file in video_files:
         video_path = os.path.join(args.input_dir, video_file)
+        rel_path = os.path.relpath(video_path)
         success, metadata = extract_frames(video_path, args.output_dir, args.max_workers)
         if success:
-            print(f"Decomposed {video_path}  into {metadata['frame_count']} frames.")
+            print(f"Decomposed {rel_path}  into {metadata['frame_count']} frames.")
             print(f"Total Time Taken: {metadata['total_time']:.2f}s")
             print(f"Decomposed Disk Space: {metadata['total_frames_size_mb']:.2f} MB")
             print(f"Decompression Ratio: {metadata['compression_ratio']:.2f}")
@@ -124,7 +125,7 @@ def main():
             print(f"Memory Utilization: {metadata['memory_utilization']:.2f}%")
             print()
         else:
-            print(f"Decomposition failed for {video_file}.")
+            print(f"Decomposition failed for {rel_path}.")
 
 if __name__ == "__main__":
     main()
